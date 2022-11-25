@@ -11,6 +11,7 @@ import {
 } from './parsing-utils';
 import { FieldTypeKeys } from './token-constants';
 import { CollectionSchema, Schema } from './types/index';
+
 export function parsePocketBaseSchema(collectionSchemas: CollectionSchema[]) {
   _.forEach(collectionSchemas, (collectionSchema) => {
     const interfaces = interfaceGenerator(collectionSchemas);

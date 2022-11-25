@@ -13,9 +13,22 @@ export function getFieldType(
   switch (type) {
     case FieldTypes.TEXT:
       return ObjectTypes.STRING;
+    case FieldTypes.NUMBER:
+      return ObjectTypes.NUMBER;
+    case FieldTypes.DATE:
+      return ObjectTypes.DATE;
+    case FieldTypes.EMAIL:
+      return ObjectTypes.STRING;
     case FieldTypes.FILE:
       return ObjectTypes.STRING;
-    case FieldTypes.OPTIONS:
+    case FieldTypes.URL: 
+      return ObjectTypes.STRING;
+    case FieldTypes.BOOL:
+      return ObjectTypes.BOOL;
+    case FieldTypes.SELECT:
+      if (options.values) {
+        return parseSelectOptions(options.values);
+      }
       return ObjectTypes.STRING_ARRAY;
     case FieldTypes.RELATION:
       const collection = _.find(
@@ -36,4 +49,11 @@ export function convertToOptionalProperty(parsedProperty: string) {
 
 export function getFormattedProperty(name: string, type: string) {
   return `\t${name}: ${type}\n`;
+}
+
+export function parseSelectOptions(options: string[]) {
+  return _.join(
+    _.map(options, (option) => `'${option}'`),
+    '|'
+  );
 }

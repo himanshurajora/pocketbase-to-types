@@ -86,6 +86,19 @@
                     "max": null,
                     "pattern": ""
                 }
+            },
+            {
+                "id": "0wl8ow6p",
+                "name": "field",
+                "type": "relation",
+                "system": false,
+                "required": true,
+                "unique": true,
+                "options": {
+                    "maxSelect": 1,
+                    "collectionId": "8nparfri8vn2po8",
+                    "cascadeDelete": false
+                }
             }
         ],
         "listRule": null,
@@ -199,6 +212,65 @@
                     "exceptDomains": [],
                     "onlyDomains": []
                 }
+            }
+        ],
+        "listRule": null,
+        "viewRule": null,
+        "createRule": null,
+        "updateRule": null,
+        "deleteRule": null,
+        "options": {}
+    },
+    {
+        "id": "8nparfri8vn2po8",
+        "name": "all_fields",
+        "type": "base",
+        "system": false,
+        "schema": [
+            {
+                "id": "cwsadzau",
+                "name": "field",
+                "type": "number",
+                "system": false,
+                "required": false,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null
+                }
+            },
+            {
+                "id": "k40c2w2m",
+                "name": "field1",
+                "type": "url",
+                "system": false,
+                "required": false,
+                "unique": false,
+                "options": {
+                    "exceptDomains": null,
+                    "onlyDomains": null
+                }
+            },
+            {
+                "id": "l3f0u8nw",
+                "name": "field2",
+                "type": "date",
+                "system": false,
+                "required": false,
+                "unique": false,
+                "options": {
+                    "min": "",
+                    "max": ""
+                }
+            },
+            {
+                "id": "7uqdrooc",
+                "name": "field3",
+                "type": "json",
+                "system": false,
+                "required": false,
+                "unique": false,
+                "options": {}
             }
         ],
         "listRule": null,

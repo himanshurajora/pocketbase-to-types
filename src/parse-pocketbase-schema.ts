@@ -1,4 +1,4 @@
-import { writeFileSync } from 'fs';
+import { existsSync, mkdir, mkdirSync, writeFileSync } from 'fs';
 import _ from 'lodash';
 import path from 'path';
 import { format } from 'prettier';
@@ -12,10 +12,14 @@ import {
 import { FieldTypeKeys } from './token-constants';
 import { CollectionSchema, Schema } from './types/index';
 
-export function parsePocketBaseSchema(collectionSchemas: CollectionSchema[]) {
+export function parsePocketBaseSchema(collectionSchemas: CollectionSchema[], outputDir: string) {
   _.forEach(collectionSchemas, (collectionSchema) => {
+    const typesDir = path.resolve(process.cwd(), outputDir)
     const interfaces = interfaceGenerator(collectionSchemas);
-    writeFileSync(path.resolve(__dirname, '../src', './type.ts'), format(interfaces));
+    if(!existsSync(typesDir)) {
+      mkdirSync(typesDir, {recursive: true})
+    }
+    writeFileSync(path.resolve(typesDir,'./index.ts'), format(interfaces), {encoding: 'utf-8'});
   });
 }
 

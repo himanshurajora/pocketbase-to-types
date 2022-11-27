@@ -19,7 +19,7 @@ export function parsePocketBaseSchema(collectionSchemas: CollectionSchema[], out
     if(!existsSync(typesDir)) {
       mkdirSync(typesDir, {recursive: true})
     }
-    writeFileSync(path.resolve(typesDir,'./index.ts'), format(interfaces), {encoding: 'utf-8'});
+    writeFileSync(path.resolve(typesDir,'./index.ts'), format(interfaces, {semi: true, parser: 'typescript'}), {encoding: 'utf-8'});
   });
 }
 

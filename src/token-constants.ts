@@ -18,7 +18,7 @@ export const ObjectTypes = {
   NUMBER: 'number',
   STRING_ARRAY: 'string[]',
   ANY: 'any',
-  BOOL: 'bool',
+  BOOL: 'boolean',
   DATE: 'Date'
 };
 

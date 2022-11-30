@@ -14,3 +14,4 @@ export const AllPTTArgs = [
 export const ValueDoesNotExistIndex = -1;
 
 export const ExportInterfaceToken = 'export interface'
+export const ExpandRelationToken = 'expand'

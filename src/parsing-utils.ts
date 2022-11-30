@@ -30,15 +30,6 @@ export function getFieldType(
         return parseSelectOptions(options.values);
       }
       return ObjectTypes.STRING_ARRAY;
-    case FieldTypes.RELATION:
-      const collection = _.find(
-        collectionSchemas,
-        (collectionSchema) => collectionSchema.id === options.collectionId
-      );
-      if (collection) {
-        return convertToInterfaceName(collection.name);
-      }
-      throw new Error('Type is relation but collection id is not specified');
   }
   return ObjectTypes.ANY;
 }
@@ -56,4 +47,32 @@ export function parseSelectOptions(options: string[]) {
     _.map(options, (option) => `'${option}'`),
     '|'
   );
+}
+
+export function getCollectionNameWithId(collectionId: string, collectionSchemas:CollectionSchema[]){
+  const collection = _.find(
+    collectionSchemas,
+    (collectionSchema) => collectionSchema.id === collectionId
+  );
+  if (collection) {
+    return convertToInterfaceName(collection.name);
+  }
+  throw new Error('Type is relation but collection id is not specified');
+}
+
+
+export function joinWithSemiColon(array: string[]){
+  return _.join(array, ';')
+}
+
+export function putBetweenCurlyBracesWithNewLines(str: string){
+  return `{\n ${str} \n}`
+}
+
+export function formatProperties(properties: string[]){
+  return putBetweenCurlyBracesWithNewLines(joinWithSemiColon(properties))
+}
+
+export function withoutUnwantedFields(array: string[]): string[]{
+  return _.without(array, '', undefined, null) as string[]
 }

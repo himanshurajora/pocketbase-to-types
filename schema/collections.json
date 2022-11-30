@@ -96,16 +96,16 @@
                 "unique": true,
                 "options": {
                     "maxSelect": 1,
-                    "collectionId": "8nparfri8vn2po8",
+                    "collectionId": "i12jq785es9wvt6",
                     "cascadeDelete": false
                 }
             }
         ],
-        "listRule": null,
-        "viewRule": null,
-        "createRule": null,
-        "updateRule": null,
-        "deleteRule": null,
+        "listRule": "",
+        "viewRule": "",
+        "createRule": "",
+        "updateRule": "",
+        "deleteRule": "",
         "options": {}
     },
     {
@@ -154,11 +154,11 @@
                 }
             }
         ],
-        "listRule": null,
-        "viewRule": null,
-        "createRule": null,
-        "updateRule": null,
-        "deleteRule": null,
+        "listRule": "",
+        "viewRule": "",
+        "createRule": "",
+        "updateRule": "",
+        "deleteRule": "",
         "options": {}
     },
     {
@@ -212,13 +212,26 @@
                     "exceptDomains": [],
                     "onlyDomains": []
                 }
+            },
+            {
+                "id": "hy427pea",
+                "name": "department",
+                "type": "relation",
+                "system": false,
+                "required": false,
+                "unique": false,
+                "options": {
+                    "maxSelect": 1,
+                    "collectionId": "1iztw28d94vfxwv",
+                    "cascadeDelete": false
+                }
             }
         ],
-        "listRule": null,
-        "viewRule": null,
-        "createRule": null,
-        "updateRule": null,
-        "deleteRule": null,
+        "listRule": "",
+        "viewRule": "",
+        "createRule": "",
+        "updateRule": "",
+        "deleteRule": "",
         "options": {}
     },
     {

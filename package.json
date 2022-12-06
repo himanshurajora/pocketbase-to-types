@@ -1,6 +1,6 @@
 {
   "name": "pocketbase-to-types",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -9,7 +9,7 @@
     "start": "tsc && node bin/index.js"
   },
   "bin": {
-    "type-generate": "bin/index.js"
+    "ptt": "bin/index.js"
   },
   "keywords": [],
   "author": "",
@@ -27,6 +27,7 @@
     "chalk": "3.0.0",
     "inquirer": "8.0.0",
     "lodash": "4.17.21",
+    "pocketbase-to-types": "^1.0.0",
     "prettier": "^2.8.0"
   }
 }

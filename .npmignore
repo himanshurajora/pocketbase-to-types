@@ -1,0 +1,6 @@
+src
+types
+schema
+node_modules
+.vscode
+.prettierrc

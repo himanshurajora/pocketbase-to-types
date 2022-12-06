@@ -1,4 +1,5 @@
 #! /usr/bin/env node
+
 import { existsSync, readFileSync } from 'fs';
 import inquirer from 'inquirer';
 import { parsePocketBaseSchema } from './parse-pocketbase-schema';
@@ -29,10 +30,10 @@ inquirer
         default: './types',
       })
       .then((answer) => {
-        console.log(chalk.white.bgYellowBright("Generating types..."));
+        console.log(chalk.white.bgYellowBright('Generating types...'));
         outputDir = answer.outputDir;
         const schema = JSON.parse(readFileSync(inputFile, 'utf8'));
         parsePocketBaseSchema(schema, outputDir);
-        console.log(chalk.black.bgGreen("Success!"));
+        console.log(chalk.black.bgGreen('Success!'));
       });
   });

@@ -1,296 +1,323 @@
 [
-    {
-        "id": "_pb_users_auth_",
-        "name": "users",
-        "type": "auth",
+  {
+    "id": "_pb_users_auth_",
+    "name": "users",
+    "type": "auth",
+    "system": false,
+    "schema": [
+      {
+        "id": "users_name",
+        "name": "name",
+        "type": "text",
         "system": false,
-        "schema": [
-            {
-                "id": "users_name",
-                "name": "name",
-                "type": "text",
-                "system": false,
-                "required": false,
-                "unique": false,
-                "options": {
-                    "min": null,
-                    "max": null,
-                    "pattern": ""
-                }
-            },
-            {
-                "id": "users_avatar",
-                "name": "avatar",
-                "type": "file",
-                "system": false,
-                "required": false,
-                "unique": false,
-                "options": {
-                    "maxSelect": 1,
-                    "maxSize": 5242880,
-                    "mimeTypes": [
-                        "image/jpg",
-                        "image/jpeg",
-                        "image/png",
-                        "image/svg+xml",
-                        "image/gif"
-                    ],
-                    "thumbs": null
-                }
-            }
-        ],
-        "listRule": "id = @request.auth.id",
-        "viewRule": "id = @request.auth.id",
-        "createRule": "",
-        "updateRule": "id = @request.auth.id",
-        "deleteRule": "id = @request.auth.id",
+        "required": false,
+        "unique": false,
         "options": {
-            "allowEmailAuth": true,
-            "allowOAuth2Auth": true,
-            "allowUsernameAuth": true,
-            "exceptEmailDomains": null,
-            "manageRule": null,
-            "minPasswordLength": 8,
-            "onlyEmailDomains": null,
-            "requireEmail": false
+          "min": null,
+          "max": null,
+          "pattern": ""
         }
-    },
-    {
-        "id": "7hf6e68esi8l8mf",
-        "name": "colleges",
-        "type": "base",
+      },
+      {
+        "id": "users_avatar",
+        "name": "avatar",
+        "type": "file",
         "system": false,
-        "schema": [
-            {
-                "id": "5szhyoea",
-                "name": "name",
-                "type": "text",
-                "system": false,
-                "required": false,
-                "unique": false,
-                "options": {
-                    "min": null,
-                    "max": null,
-                    "pattern": ""
-                }
-            },
-            {
-                "id": "tsdyeas9",
-                "name": "code",
-                "type": "text",
-                "system": false,
-                "required": false,
-                "unique": true,
-                "options": {
-                    "min": null,
-                    "max": null,
-                    "pattern": ""
-                }
-            },
-            {
-                "id": "0wl8ow6p",
-                "name": "field",
-                "type": "relation",
-                "system": false,
-                "required": true,
-                "unique": true,
-                "options": {
-                    "maxSelect": 1,
-                    "collectionId": "i12jq785es9wvt6",
-                    "cascadeDelete": false
-                }
-            }
-        ],
-        "listRule": "",
-        "viewRule": "",
-        "createRule": "",
-        "updateRule": "",
-        "deleteRule": "",
-        "options": {}
-    },
-    {
-        "id": "1iztw28d94vfxwv",
-        "name": "departments",
-        "type": "base",
+        "required": false,
+        "unique": false,
+        "options": {
+          "maxSelect": 1,
+          "maxSize": 5242880,
+          "mimeTypes": [
+            "image/jpg",
+            "image/jpeg",
+            "image/png",
+            "image/svg+xml",
+            "image/gif"
+          ],
+          "thumbs": null
+        }
+      },
+      {
+        "id": "swuywhzc",
+        "name": "role",
+        "type": "select",
         "system": false,
-        "schema": [
-            {
-                "id": "l1slpo1q",
-                "name": "name",
-                "type": "text",
-                "system": false,
-                "required": false,
-                "unique": false,
-                "options": {
-                    "min": null,
-                    "max": null,
-                    "pattern": ""
-                }
-            },
-            {
-                "id": "lijhszvi",
-                "name": "code",
-                "type": "text",
-                "system": false,
-                "required": false,
-                "unique": true,
-                "options": {
-                    "min": null,
-                    "max": null,
-                    "pattern": ""
-                }
-            },
-            {
-                "id": "5r8z4jws",
-                "name": "_college",
-                "type": "relation",
-                "system": false,
-                "required": false,
-                "unique": false,
-                "options": {
-                    "maxSelect": 1,
-                    "collectionId": "7hf6e68esi8l8mf",
-                    "cascadeDelete": false
-                }
-            }
-        ],
-        "listRule": "",
-        "viewRule": "",
-        "createRule": "",
-        "updateRule": "",
-        "deleteRule": "",
-        "options": {}
-    },
-    {
-        "id": "i12jq785es9wvt6",
-        "name": "test",
-        "type": "base",
+        "required": true,
+        "unique": false,
+        "options": {
+          "maxSelect": 1,
+          "values": [
+            "student",
+            "teacher",
+            "departmentAdmin",
+            "collegeAdmin",
+            "guest"
+          ]
+        }
+      },
+      {
+        "id": "rzvxumch",
+        "name": "code",
+        "type": "text",
         "system": false,
-        "schema": [
-            {
-                "id": "kheb6fn0",
-                "name": "field",
-                "type": "bool",
-                "system": false,
-                "required": false,
-                "unique": false,
-                "options": {}
-            },
-            {
-                "id": "wa1mpfvj",
-                "name": "field1",
-                "type": "select",
-                "system": false,
-                "required": false,
-                "unique": true,
-                "options": {
-                    "maxSelect": 1,
-                    "values": [
-                        "one",
-                        "two",
-                        "three"
-                    ]
-                }
-            },
-            {
-                "id": "garsbuvq",
-                "name": "field2",
-                "type": "json",
-                "system": false,
-                "required": false,
-                "unique": false,
-                "options": {}
-            },
-            {
-                "id": "c8kiv9a6",
-                "name": "field3",
-                "type": "email",
-                "system": false,
-                "required": false,
-                "unique": false,
-                "options": {
-                    "exceptDomains": [],
-                    "onlyDomains": []
-                }
-            },
-            {
-                "id": "hy427pea",
-                "name": "department",
-                "type": "relation",
-                "system": false,
-                "required": false,
-                "unique": false,
-                "options": {
-                    "maxSelect": 1,
-                    "collectionId": "1iztw28d94vfxwv",
-                    "cascadeDelete": false
-                }
-            }
-        ],
-        "listRule": "",
-        "viewRule": "",
-        "createRule": "",
-        "updateRule": "",
-        "deleteRule": "",
-        "options": {}
-    },
-    {
-        "id": "8nparfri8vn2po8",
-        "name": "all_fields",
-        "type": "base",
+        "required": true,
+        "unique": false,
+        "options": {
+          "min": null,
+          "max": null,
+          "pattern": ""
+        }
+      },
+      {
+        "id": "l0scuasx",
+        "name": "department",
+        "type": "relation",
         "system": false,
-        "schema": [
-            {
-                "id": "cwsadzau",
-                "name": "field",
-                "type": "number",
-                "system": false,
-                "required": false,
-                "unique": false,
-                "options": {
-                    "min": null,
-                    "max": null
-                }
-            },
-            {
-                "id": "k40c2w2m",
-                "name": "field1",
-                "type": "url",
-                "system": false,
-                "required": false,
-                "unique": false,
-                "options": {
-                    "exceptDomains": null,
-                    "onlyDomains": null
-                }
-            },
-            {
-                "id": "l3f0u8nw",
-                "name": "field2",
-                "type": "date",
-                "system": false,
-                "required": false,
-                "unique": false,
-                "options": {
-                    "min": "",
-                    "max": ""
-                }
-            },
-            {
-                "id": "7uqdrooc",
-                "name": "field3",
-                "type": "json",
-                "system": false,
-                "required": false,
-                "unique": false,
-                "options": {}
-            }
-        ],
-        "listRule": null,
-        "viewRule": null,
-        "createRule": null,
-        "updateRule": null,
-        "deleteRule": null,
-        "options": {}
+        "required": true,
+        "unique": false,
+        "options": {
+          "maxSelect": 1,
+          "collectionId": "eya1p6ap6j7xi98",
+          "cascadeDelete": false
+        }
+      }
+    ],
+    "listRule": "",
+    "viewRule": "",
+    "createRule": "",
+    "updateRule": "",
+    "deleteRule": "",
+    "options": {
+      "allowEmailAuth": true,
+      "allowOAuth2Auth": true,
+      "allowUsernameAuth": true,
+      "exceptEmailDomains": null,
+      "manageRule": null,
+      "minPasswordLength": 8,
+      "onlyEmailDomains": null,
+      "requireEmail": false
     }
+  },
+  {
+    "id": "hekmnxl1lt7e9ae",
+    "name": "colleges",
+    "type": "base",
+    "system": false,
+    "schema": [
+      {
+        "id": "rpwinzga",
+        "name": "name",
+        "type": "text",
+        "system": false,
+        "required": true,
+        "unique": true,
+        "options": {
+          "min": null,
+          "max": null,
+          "pattern": ""
+        }
+      },
+      {
+        "id": "x57dljbk",
+        "name": "code",
+        "type": "text",
+        "system": false,
+        "required": true,
+        "unique": true,
+        "options": {
+          "min": null,
+          "max": null,
+          "pattern": ""
+        }
+      },
+      {
+        "id": "vbxkntkk",
+        "name": "admin",
+        "type": "relation",
+        "system": false,
+        "required": false,
+        "unique": false,
+        "options": {
+          "maxSelect": 1,
+          "collectionId": "_pb_users_auth_",
+          "cascadeDelete": false
+        }
+      }
+    ],
+    "listRule": "",
+    "viewRule": "",
+    "createRule": "",
+    "updateRule": "",
+    "deleteRule": "",
+    "options": {}
+  },
+  {
+    "id": "eya1p6ap6j7xi98",
+    "name": "departments",
+    "type": "base",
+    "system": false,
+    "schema": [
+      {
+        "id": "enhkf7vc",
+        "name": "name",
+        "type": "text",
+        "system": false,
+        "required": true,
+        "unique": true,
+        "options": {
+          "min": null,
+          "max": null,
+          "pattern": ""
+        }
+      },
+      {
+        "id": "afgn4uz2",
+        "name": "code",
+        "type": "text",
+        "system": false,
+        "required": true,
+        "unique": true,
+        "options": {
+          "min": null,
+          "max": null,
+          "pattern": ""
+        }
+      },
+      {
+        "id": "0zjkgyfb",
+        "name": "admin",
+        "type": "relation",
+        "system": false,
+        "required": false,
+        "unique": false,
+        "options": {
+          "maxSelect": 1,
+          "collectionId": "_pb_users_auth_",
+          "cascadeDelete": false
+        }
+      },
+      {
+        "id": "yuwu4h41",
+        "name": "college",
+        "type": "relation",
+        "system": false,
+        "required": false,
+        "unique": false,
+        "options": {
+          "maxSelect": 1,
+          "collectionId": "hekmnxl1lt7e9ae",
+          "cascadeDelete": false
+        }
+      }
+    ],
+    "listRule": "",
+    "viewRule": "",
+    "createRule": "",
+    "updateRule": "",
+    "deleteRule": "",
+    "options": {}
+  },
+  {
+    "id": "kmttshva0l6dbc0",
+    "name": "classes",
+    "type": "base",
+    "system": false,
+    "schema": [
+      {
+        "id": "v6pq7ouq",
+        "name": "name",
+        "type": "text",
+        "system": false,
+        "required": true,
+        "unique": true,
+        "options": {
+          "min": null,
+          "max": null,
+          "pattern": ""
+        }
+      },
+      {
+        "id": "vv9q7cmd",
+        "name": "code",
+        "type": "text",
+        "system": false,
+        "required": true,
+        "unique": true,
+        "options": {
+          "min": null,
+          "max": null,
+          "pattern": ""
+        }
+      },
+      {
+        "id": "kzu4fu5z",
+        "name": "department",
+        "type": "relation",
+        "system": false,
+        "required": false,
+        "unique": false,
+        "options": {
+          "maxSelect": 1,
+          "collectionId": "eya1p6ap6j7xi98",
+          "cascadeDelete": false
+        }
+      }
+    ],
+    "listRule": "",
+    "viewRule": "",
+    "createRule": "",
+    "updateRule": "",
+    "deleteRule": "",
+    "options": {}
+  },
+  {
+    "id": "vhmvbm25qpkps30",
+    "name": "attendances",
+    "type": "base",
+    "system": false,
+    "schema": [
+      {
+        "id": "uudenc2a",
+        "name": "class",
+        "type": "relation",
+        "system": false,
+        "required": true,
+        "unique": false,
+        "options": {
+          "maxSelect": 1,
+          "collectionId": "kmttshva0l6dbc0",
+          "cascadeDelete": false
+        }
+      },
+      {
+        "id": "kkvl1ijt",
+        "name": "student",
+        "type": "relation",
+        "system": false,
+        "required": true,
+        "unique": false,
+        "options": {
+          "maxSelect": 1,
+          "collectionId": "_pb_users_auth_",
+          "cascadeDelete": false
+        }
+      },
+      {
+        "id": "m08spoke",
+        "name": "present",
+        "type": "bool",
+        "system": false,
+        "required": false,
+        "unique": false,
+        "options": {}
+      }
+    ],
+    "listRule": "",
+    "viewRule": "",
+    "createRule": "",
+    "updateRule": "",
+    "deleteRule": "",
+    "options": {}
+  }
 ]

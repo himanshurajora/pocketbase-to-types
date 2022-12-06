@@ -1,7 +1,7 @@
 import { existsSync, mkdir, mkdirSync, writeFileSync } from 'fs';
 import _ from 'lodash';
 import path from 'path';
-import { format } from 'prettier';
+import { clearConfigCache, format } from 'prettier';
 import { ExpandRelationToken, ExportInterfaceToken } from './constants';
 import {
   convertToOptionalProperty,
@@ -71,10 +71,10 @@ export function propertiesGenerator(
 }
 
 export function parseProperty(
-  property: Schema,
+  schema: Schema,
   collectionSchemas: CollectionSchema[]
 ) {
-  const { name, type, required, options } = property;
+  const { name, type, required, options } = schema;
   // type relation is parsed using generateDirectAndIndirectRelations
   if (type === FieldTypes.RELATION) return '';
   const parsedProperty = getFormattedProperty(
@@ -97,14 +97,29 @@ export function generateDirectAndIndirectRelations(
   const directRelations = withoutUnwantedFields(
     _.map(collectionSchema.schema, (columnSchema) => {
       if (columnSchema.type !== FieldTypes.RELATION) return '';
-      return `${columnSchema.name}: ${getCollectionNameWithId(
+      return `${columnSchema.name}?: ${getCollectionNameWithId(
         columnSchema.options.collectionId!,
         collectionSchemas
       )}`;
     })
   );
 
-  return directRelations;
+  const indirectRelations = withoutUnwantedFields(
+    _.flatMap(
+      _.map(collectionSchemas, (tableSchema) => {
+        return _.map(tableSchema.schema, (column) => {
+          return column.type === FieldTypes.RELATION &&
+            column.options.collectionId === collectionSchema.id
+            ? `'${tableSchema.name}(${column.name})'?: ${convertToInterfaceName(
+                tableSchema.name
+              )}[]`
+            : null;
+        });
+      })
+    )
+  );
+
+  return [...directRelations, ...indirectRelations];
 }
 
 export function generateObjectWithKeys(key: string, values: string[]) {

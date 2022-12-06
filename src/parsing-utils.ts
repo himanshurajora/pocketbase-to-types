@@ -21,7 +21,7 @@ export function getFieldType(
       return ObjectTypes.STRING;
     case FieldTypes.FILE:
       return ObjectTypes.STRING;
-    case FieldTypes.URL: 
+    case FieldTypes.URL:
       return ObjectTypes.STRING;
     case FieldTypes.BOOL:
       return ObjectTypes.BOOL;
@@ -49,7 +49,10 @@ export function parseSelectOptions(options: string[]) {
   );
 }
 
-export function getCollectionNameWithId(collectionId: string, collectionSchemas:CollectionSchema[]){
+export function getCollectionNameWithId(
+  collectionId: string,
+  collectionSchemas: CollectionSchema[]
+) {
   const collection = _.find(
     collectionSchemas,
     (collectionSchema) => collectionSchema.id === collectionId
@@ -60,19 +63,20 @@ export function getCollectionNameWithId(collectionId: string, collectionSchemas:
   throw new Error('Type is relation but collection id is not specified');
 }
 
-
-export function joinWithSemiColon(array: string[]){
-  return _.join(array, ';')
+export function joinWithSemiColon(array: string[]) {
+  return _.join(array, ';');
 }
 
-export function putBetweenCurlyBracesWithNewLines(str: string){
-  return `{\n ${str} \n}`
+export function putBetweenCurlyBracesWithNewLines(str: string) {
+  return `{\n ${str} \n}`;
 }
 
-export function formatProperties(properties: string[]){
-  return putBetweenCurlyBracesWithNewLines(joinWithSemiColon(properties))
+export function formatProperties(properties: string[]) {
+  return putBetweenCurlyBracesWithNewLines(joinWithSemiColon(properties));
 }
 
-export function withoutUnwantedFields(array: string[]): string[]{
-  return _.without(array, '', undefined, null) as string[]
+export function withoutUnwantedFields(
+  array: (string | null | undefined)[]
+): string[] {
+  return _.without(array, '', undefined, null) as string[];
 }

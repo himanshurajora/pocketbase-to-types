@@ -8,6 +8,7 @@ export interface Colleges {
   code?: string;
   expand: {
     field: Test;
+    "departments(_college)": Departments;
   };
 }
 export interface Departments {
@@ -15,6 +16,7 @@ export interface Departments {
   code?: string;
   expand: {
     _college: Colleges;
+    "test(department)": Test;
   };
 }
 export interface Test {
@@ -24,6 +26,7 @@ export interface Test {
   field3?: string;
   expand: {
     department: Departments;
+    "colleges(field)": Colleges;
   };
 }
 export interface AllFields {

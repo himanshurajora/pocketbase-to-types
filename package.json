@@ -1,8 +1,12 @@
 {
   "name": "pocketbase-to-types",
-  "version": "1.0.14",
-  "description": "",
+  "version": "1.0.15",
+  "description": "Generate Types For PocketBase Schema",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/himanshurajora/pocketbase-to-types"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "concurrently \"tsc --watch\" \"nodemon bin/index.js  --input collections.json --outputDir types\"",
@@ -11,8 +15,25 @@
   "bin": {
     "ptt": "bin/index.js"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "pocketbase",
+    "pocket base",
+    "typescript",
+    "pocketbase types",
+    "pocketbase types generator",
+    "pocketbase to types",
+    "pocketbase schema",
+    "pocketbase schema to types",
+    "pocket types",
+    "types of pocketbase",
+    "pocketbase type generator",
+    "types for pocketbase schema",
+    "schema to types pocketbase",
+    "easy tool for pocketbase typescript",
+    "pocketbase with typescript"
+  ],
+  "author": "himanshurajora",
+  "displayName": "Himanshu Jangid",
   "license": "ISC",
   "devDependencies": {
     "@types/lodash": "4.14.189",
@@ -28,5 +49,11 @@
     "inquirer": "8.0.0",
     "lodash": "4.17.21",
     "prettier": "^2.8.0"
+  },
+  "prettier": {
+    "trailingComma": "all",
+    "tabWidth": 2,
+    "semi": true,
+    "singleQuote": true
   }
 }

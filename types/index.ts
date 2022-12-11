@@ -1,38 +1,52 @@
 export interface Users {
   name?: string;
   avatar?: string;
-  expand: {};
+  role: "student" | "teacher" | "departmentAdmin" | "collegeAdmin" | "guest";
+  code: string;
+  expand: {
+    department?: Departments;
+    "colleges(admin)"?: Colleges[];
+    "departments(admin)"?: Departments[];
+    "attendances(student)"?: Attendances[];
+  };
 }
 export interface Colleges {
-  name?: string;
-  code?: string;
+  name: string;
+  code: string;
   expand: {
-    field: Test;
-    "departments(_college)": Departments;
+    admin?: Users;
+    "departments(college)"?: Departments[];
   };
 }
 export interface Departments {
-  name?: string;
-  code?: string;
+  name: string;
+  code: string;
   expand: {
-    _college: Colleges;
-    "test(department)": Test;
+    admin?: Users;
+    college?: Colleges;
+    "users(department)"?: Users[];
+    "classes(department)"?: Classes[];
   };
 }
-export interface Test {
-  field?: boolean;
-  field1?: "one" | "two" | "three";
-  field2?: any;
-  field3?: string;
+export interface Classes {
+  name: string;
+  code: string;
   expand: {
-    department: Departments;
-    "colleges(field)": Colleges;
+    department?: Departments;
+    "attendances(class)"?: Attendances[];
   };
 }
-export interface AllFields {
-  field?: number;
-  field1?: string;
-  field2?: Date;
-  field3?: any;
-  expand: {};
+export interface Attendances {
+  present?: boolean;
+  expand: {
+    class?: Classes;
+    student?: Users;
+  };
 }
+export const Collections = {
+  Users: "users",
+  Colleges: "colleges",
+  Departments: "departments",
+  Classes: "classes",
+  Attendances: "attendances",
+};

@@ -2,7 +2,11 @@ import { existsSync, mkdir, mkdirSync, writeFileSync } from 'fs';
 import _ from 'lodash';
 import path from 'path';
 import { clearConfigCache, format } from 'prettier';
-import { ExpandRelationToken, ExportInterfaceToken } from './constants';
+import {
+  ExpandRelationToken,
+  ExportConstantObjectForCollectionNames,
+  ExportInterfaceToken,
+} from './constants';
 import {
   convertToOptionalProperty,
   convertToInterfaceName,
@@ -34,18 +38,26 @@ export function parsePocketBaseSchema(
 }
 
 export const interfaceGenerator = (collectionSchemas: CollectionSchema[]) => {
-  return _.join(
+  const interfaces = _.map(collectionSchemas, (collectionSchema) => {
+    const { name } = collectionSchema;
+    const interfaceStart = interfaceStartGenerator(name);
+    const parsedProperties = propertiesGenerator(
+      collectionSchema,
+      collectionSchemas
+    );
+    return `${interfaceStart}${parsedProperties}\n`;
+  });
+
+  const collectionNameConstants = `${ExportConstantObjectForCollectionNames}{${_.join(
     _.map(collectionSchemas, (collectionSchema) => {
-      const { name } = collectionSchema;
-      const interfaceStart = interfaceStartGenerator(name);
-      const parsedProperties = propertiesGenerator(
-        collectionSchema,
-        collectionSchemas
-      );
-      return `${interfaceStart}${parsedProperties}\n`;
+      return `${convertToInterfaceName(collectionSchema.name)}: '${
+        collectionSchema.name
+      }'`;
     }),
-    ''
-  );
+    ','
+  )}}`;
+
+  return _.join([...interfaces, collectionNameConstants], '');
 };
 export function interfaceStartGenerator(collectionSchemaName: string) {
   const name = convertToInterfaceName(collectionSchemaName);

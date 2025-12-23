@@ -1,7 +1,8 @@
 {
   "name": "pocketbase-to-types",
   "version": "1.0.15",
-  "description": "Generate Types For PocketBase Schema",
+  "deprecated": "This package is no longer maintained. Please use an actively maintained alternative such as pocketbase-typegen (https://github.com/patmood/pocketbase-typegen).",
+  "description": "⚠️ DEPRECATED - Generate Types For PocketBase Schema",
   "main": "index.js",
   "repository": {
     "type": "git",

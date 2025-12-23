@@ -8,6 +8,13 @@ import chalk from 'chalk';
 let inputFile: string;
 let outputDir: string;
 
+// Deprecation warning
+console.log(chalk.yellow.bold('\n⚠️  DEPRECATION WARNING ⚠️'));
+console.log(chalk.yellow('This package (pocketbase-to-types) is no longer maintained.'));
+console.log(chalk.yellow('Please consider using an actively maintained alternative:'));
+console.log(chalk.cyan('  - pocketbase-typegen: https://github.com/patmood/pocketbase-typegen'));
+console.log(chalk.yellow('Thank you for using this package.\n'));
+
 inquirer
   .prompt({
     type: 'input',

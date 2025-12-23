@@ -1,5 +1,15 @@
 # PocketBase to Types
 
+> ⚠️ **DEPRECATED - NO LONGER MAINTAINED** ⚠️
+>
+> **This package is no longer being maintained.** Please consider using one of the following actively maintained alternatives:
+>
+> - [pocketbase-typegen](https://github.com/patmood/pocketbase-typegen) - A popular and actively maintained TypeScript type generator for PocketBase
+>
+> Thank you to everyone who used and contributed to this project.
+
+---
+
 This is an OpenSource project really useful for PocketBase developers.
 
 What is PocketBase?
